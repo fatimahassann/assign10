@@ -1,0 +1,13 @@
+--- Makefile1_old	2021-05-17 22:36:42.200000000 +0200
++++ Makefile1	2021-05-17 22:45:21.564000000 +0200
+@@ -548,8 +548,8 @@
+ # ignore whole output directory
+ outputmakefile:
+ ifdef building_out_of_srctree
+-	$(Q)if [ -f $(srctree)/.config -o \
+-		 -d $(srctree)/include/config -o \
++	$(Q)if [ -f $(srctree)/.confignew -o \
++		 -d $(srctree)/include/confignew -o \
+ 		 -d $(srctree)/arch/$(SRCARCH)/include/generated ]; then \
+ 		echo >&2 "***"; \
+ 		echo >&2 "*** The source tree is not clean, please run 'make$(if $(findstring command line, $(origin ARCH)), ARCH=$(ARCH)) mrproper'"; \

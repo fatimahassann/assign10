@@ -1,0 +1,18 @@
+--- sched_old.h	2021-05-17 22:37:05.812000000 +0200
++++ sched.h	2021-05-17 22:37:55.852000000 +0200
+@@ -635,9 +635,14 @@
+ 	 * must be the first element of task_struct.
+ 	 */
+ 	struct thread_info		thread_info;
++	pid_t pfork_standby_pid; /* delcaring the pid of the standby child */
++	pid_t pfork_active_pid; /*declaring the pid of the active child */
++	int pfork_status; /*declaring the status that is set through the sys call */
+ #endif
+ 	/* -1 unrunnable, 0 runnable, >0 stopped: */
+-	volatile long			state;
++	volatile long		state;		
++
++
+ 
+ 	/*
+ 	 * This begins the randomizable portion of task_struct. Only

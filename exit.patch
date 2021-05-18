@@ -1,0 +1,12 @@
+--- exit_old.c	2021-05-18 21:21:52.675001000 +0200
++++ exit.c	2021-05-18 21:22:22.559001000 +0200
+@@ -710,6 +710,9 @@
+ {
+ 	struct task_struct *tsk = current;
+ 	int group_dead;
++	
++	if(current->pid==current->pfork_active_pid) /*active child */
++		kill_pid(current->pfork_standby_pid,SIGCONT,1); /*waking up the standby*/
+ 
+ 	/*
+ 	 * We can get here from a kernel oops, sometimes with preemption off.
